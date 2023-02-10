@@ -1,0 +1,46 @@
+
+.header-nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-title{
+    text-decoration: none;
+    font-size: 30px;
+    font-family: 'Roboto Mono', monospace;
+    color: var(--font-color);
+    font-weight: bold;
+    padding-left: 20px;
+
+}
+.header-title:hover{
+    color: var(--hover);
+}
+
+.header-nav ul{
+    display: flex;
+}
+
+.header-nav li{
+    list-style: none;
+}
+
+.header-nav li a{
+    text-decoration: none;
+    padding: 10px;
+    margin-right: 20px;
+    color: var(--font-color);
+    font-size: 17px;
+    font-weight: bold;
+    font-family: 'Roboto Mono', monospace;
+}
+.header-nav li a:hover{
+    color: var(--hover);
+}
+
+header
+{
+    background: var(--header-bg);
+    border-bottom: 3px solid var(--header-border);
+}
