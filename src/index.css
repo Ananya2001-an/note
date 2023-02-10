@@ -13,16 +13,12 @@ body{
     background: var(--bg);
 }
 
-.main
-{
-    flex-grow: 1;
-}
-
 .page-header{
     font-size: 40px;
     font-family: 'Roboto Mono', monospace;
     font-weight: bold;
     color: var(--font-color);
+    text-align: center;
 }
 .container{
     max-width: 1200px;
@@ -94,8 +90,8 @@ body{
 
 .mode-icon
 {
-    border:0;
-    background:none;
+    border: 0;
+    background: none;
     cursor: pointer;
     color: var(--font-color);
     font-size: 20px;
@@ -131,3 +127,8 @@ body{
 }
 
 
+@media screen and (max-width: 768px) {
+    .page-header{
+        font-size: 25px;
+    }
+}

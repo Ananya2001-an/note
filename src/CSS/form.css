@@ -38,7 +38,6 @@
     font-weight: bold;
 }
 
-
 .form-item input:focus, .form-item select:focus, .form-item textarea:focus
 {
     border-color:var(--hover);
@@ -64,13 +63,27 @@
 
 }
 
-.filepond--panel-root{
+.filepond--panel{
     background-color: var(--bg);
     border: 1px solid var(--header-border);
+    border-radius: 0.25rem;
 }
 
 .filepond--drop-label{
     color: var(--font-color);
     font-size: inherit;
+    background-color: var(--bg);
+    border: 1px solid var(--header-border);
+    border-radius: 0.25rem;
+}
 
+@media screen and (max-width: 900px) {
+    .form-row{
+        flex-direction: column;
+    }
+
+    .form-item{
+        margin-left: 0;
+        margin-top: 10px;
+    }
 }
