@@ -63,15 +63,18 @@
 
 }
 
-.filepond--panel-root{
+.filepond--panel{
     background-color: var(--bg);
     border: 1px solid var(--header-border);
+    border-radius: 0.25rem;
 }
 
 .filepond--drop-label{
     color: var(--font-color);
     font-size: inherit;
-
+    background-color: var(--bg);
+    border: 1px solid var(--header-border);
+    border-radius: 0.25rem;
 }
 
 @media screen and (max-width: 900px) {

@@ -14,14 +14,17 @@ function FilePondUpload() {
 
   return (
     <div className="container mt-4">
-      <h2 className="mb-3">React FilePond File Upload Example</h2>
+      <p className="mb-3 text-small muted" style={{fontFamily:"Roboto Mono, monospace", color:"var(--font-color)"}}>**Below you will get a preview of the attached file**</p>
       <FilePond
+        name="cover"
+        allowImagePreview={true}
         allowMultiple={true}
         files={files}
         onupdatefiles={setFiles}
         maxFiles={5}
+        instantUpload={true}
         allowReorder={true}
-        server="" // File upload api goes here
+        server="/" // File upload api goes here
       />
     </div>
   );
