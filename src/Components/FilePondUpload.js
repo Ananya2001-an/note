@@ -16,7 +16,8 @@ function FilePondUpload() {
     <div className="container mt-4">
       <p className="mb-3 text-small muted" style={{fontFamily:"Roboto Mono, monospace", color:"var(--font-color)"}}>**Below you will get a preview of the attached file**</p>
       <FilePond
-        name="cover"
+        acceptedFileTypes: ['image/*'],
+        name="img"
         allowImagePreview={true}
         allowMultiple={true}
         files={files}
