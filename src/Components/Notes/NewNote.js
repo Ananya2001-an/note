@@ -1,22 +1,30 @@
 import React, {useRef} from 'react'
 import axios from 'axios'
-import FilePondUpload from "../FilePondUpload.js";
 
 export default function NewNote() {
 const nameRef = useRef();
 const noteRef = useRef();
-const imgRef = useRef();
+let imgURL = ''
+
+const loadFile = (e)=>{
+let output = document.getElementById("output");
+output.hidden = false;
+imgURL = URL.createObjectURL(e.target.files[0]);
+output.src = imgURL
+}
     
-const addNote = (e)=>{
+const addNote = async(e)=>{
     e.preventDefault();
-    console.log(nameRef.current.value)
-    // const note = {
-    //   name: nameRef.current.value,
-    //   note: noteRef.current.value,
-    //   img: URL.createObjectURL(imgRef.files[0])
-    // };
-    // axios.post(`${process.env.REACT_APP_SERVER_URL}/notes`, note)
-    // .then(res => console.log(res))
+    const note = {
+      name: nameRef.current.value,
+      note: noteRef.current.value,
+      img: imgURL
+    };
+    axios({
+      method: "post",
+      url: `${process.env.REACT_APP_SERVER_URL}/notes`
+    })
+    .then((res) => console.log(res));
   }
 
   return (
@@ -30,9 +38,23 @@ const addNote = (e)=>{
               <input type="text" ref={nameRef} />
             </div>
             <div className="form-item">
-              <label>Cover Image:</label>
-              <FilePondUpload ref={imgRef} />
+              <label for="file" className='file-label'>Choose cover image</label>
+              <input
+                type="file"
+                id='file'
+                accept="image/*"
+                onChange={(e) => loadFile(e)}
+              />
             </div>
+          </div>
+          <div className="form-row" style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
+              <img
+                hidden
+                id="output"
+                width="200px"
+                height="200px"
+                style={{ objectFit: "contain" }}
+              />
           </div>
           <div className="form-row">
             <div className="form-item">

@@ -1,4 +1,3 @@
-import FilePondUpload from "../FilePondUpload.js";
 import React from "react";
 
 export default function FormFieldsAssign() {
@@ -31,7 +30,6 @@ export default function FormFieldsAssign() {
       <div className="form-row">
         <div className="form-item">
           <label>Attach image of assignment</label>
-          <FilePondUpload />
         </div>
       </div>
     </>
