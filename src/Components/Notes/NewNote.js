@@ -1,5 +1,5 @@
 import React, {useRef} from 'react'
-import axios from 'axios'
+import axios from 'axios';
 
 export default function NewNote() {
 const nameRef = useRef();
@@ -20,11 +20,9 @@ const addNote = async(e)=>{
       note: noteRef.current.value,
       img: imgURL
     };
-    axios({
-      method: "post",
-      url: `${process.env.REACT_APP_SERVER_URL}/notes`
-    })
-    .then((res) => console.log(res));
+
+    axios.post("https://5000-ananya2001an-noteserver-qb5v37z4aau.ws-us86.gitpod.io/notes", note)
+    .then(res => console.log(res))
   }
 
   return (
