@@ -27,7 +27,7 @@ export default function ViewNote() {
   return (
     <>
       <div className="cover-image">
-        <img width="100%" height="100%" alt="cover-image" src={note.cover} />
+        <img width="100%" height="100%" alt="cover" src={note.cover} />
       </div>
       {/* <div className="emoji-input">emoji picker</div> */}
       <div className="container">
