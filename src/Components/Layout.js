@@ -1,55 +1,68 @@
-import React, { useEffect, useState } from 'react'
-import {FaGithub, FaMoon, FaSun} from 'react-icons/fa'
-import { Outlet } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { FaGithub, FaMoon, FaSun } from "react-icons/fa";
+import { Outlet, useNavigate } from "react-router-dom";
 
 export default function Layout() {
-// const [mode, setMode] = useState('day')
-    
-function changeColor() {
+  const navigate = useNavigate();
+  function changeColor() {
     document.body.classList.toggle("dark-theme");
-    
-    // let btn = document.getElementById('switchmode')
-    // if (mode === 'day'){
-    //     btn.innerHTML = `<FaMoon />`;
-    //     setMode('night')
-    // } 
-    // else{
-    //   btn.innerHTML = `<FaSun />`; 
-    //   setMode('day')
-    // }
   }
 
-useEffect(()=>{
-const hamburger = document.querySelector(".hamburger");
-const navMenuMobile = document.querySelector(".nav-menu-mobile");
+  useEffect(() => {
+    const hamburger = document.querySelector(".hamburger");
+    const navMenuMobile = document.querySelector(".nav-menu-mobile");
 
-hamburger.addEventListener("click", mobileMenu);
+    hamburger.addEventListener("click", mobileMenu);
 
-function mobileMenu() {
-  hamburger.classList.toggle("active");
-  navMenuMobile.classList.toggle("active");
-}
-}, [])
+    function mobileMenu() {
+      hamburger.classList.toggle("active");
+      navMenuMobile.classList.toggle("active");
+    }
+  }, []);
 
   return (
     <>
       <header className="header">
         <nav className="header-nav">
-          <a href="/" className="header-title">
+          <a
+            onClick={() => navigate("/")}
+            style={{ cursor: "pointer" }}
+            className="header-title"
+          >
             note.
           </a>
           <ul className="nav-menu-desktop">
             <li>
-              <a href="/assignments">Assignments</a>
+              <a
+                style={{ cursor: "pointer" }}
+                onClick={() => navigate("/assignments")}
+              >
+                Assignments
+              </a>
             </li>
             <li>
-              <a href="/assignments/new">Add Assignment</a>
+              <a
+                style={{ cursor: "pointer" }}
+                onClick={() => navigate("/assignments/new")}
+              >
+                Add Assignment
+              </a>
             </li>
             <li>
-              <a href="/notes">Notes</a>
+              <a
+                style={{ cursor: "pointer" }}
+                onClick={() => navigate("/notes")}
+              >
+                Notes
+              </a>
             </li>
             <li>
-              <a href="/notes/new">Add Note</a>
+              <a
+                style={{ cursor: "pointer" }}
+                onClick={() => navigate("/notes/new")}
+              >
+                Add Note
+              </a>
             </li>
             <li>
               <button
@@ -71,16 +84,33 @@ function mobileMenu() {
       </header>
       <ul className="nav-menu-mobile">
         <li className="nav-item">
-          <a href="/assignments">Assignments</a>
+          <a
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/assignments")}
+          >
+            Assignments
+          </a>
         </li>
         <li className="nav-item">
-          <a href="/assignments/new">Add Assignment</a>
+          <a
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/assignments/new")}
+          >
+            Add Assignment
+          </a>
         </li>
         <li className="nav-item">
-          <a href="/notes">Notes</a>
+          <a style={{ cursor: "pointer" }} onClick={() => navigate("/notes")}>
+            Notes
+          </a>
         </li>
         <li className="nav-item">
-          <a href="/notes/new">Add Note</a>
+          <a
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/notes/new")}
+          >
+            Add Note
+          </a>
         </li>
         <li className="nav-item">
           <button
@@ -98,14 +128,18 @@ function mobileMenu() {
       <footer>
         <div
           className="social"
-          style={{fontFamily: "Roboto Mono, monospace",fontSize:"13px",color: "var(--font-color)"}}
+          style={{
+            fontFamily: "Roboto Mono, monospace",
+            fontSize: "13px",
+            color: "var(--font-color)",
+          }}
         >
           <a
             href="https://www.github.com/Ananya2001-an/note"
             target="_blank"
-            rel='nonreferrer'
+            rel="nonreferrer"
           >
-            <FaGithub/>
+            <FaGithub />
           </a>
         </div>
       </footer>
