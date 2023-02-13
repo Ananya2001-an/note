@@ -37,7 +37,7 @@ export default function Layout() {
                 style={{
                   cursor: "pointer",
                   background: "none",
-                  border: "none",
+                  border: "none"
                 }}
                 onClick={() => navigate("/assignments")}
               >
