@@ -1,29 +1,76 @@
-import React from 'react'
+import React, { useState, useRef, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Notes() {
-  return (
-   <div className="container">
-        <h2 className="page-header">Search Notes</h2>
-        <div className="inner-container">
-        <form action="/notes" method="get">
-            <div className="form-row">
-                <div className="form-item">
-                    <label>Name:</label>
-                    <input type="text" name="name"/>
-                </div>
-            </div>
-            <div className="form-row form-row-end">
-                <button className="btn btn-primary" type="submit">Search</button>
-            </div>
+  const [notes, setNotes] = useState([]);
+  const searchRef = useRef();
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/notes`)
+      .then((res) => setNotes(res.data));
+  }, []);
+
+  const search = (e) => {
+    e.preventDefault();
+    axios
+      .get(
+        `${process.env.REACT_APP_SERVER_URL}/notes?search=${searchRef.current.value}`
+      )
+      .then((res) => setNotes(res.data));
+  };
+
+  return (
+    <div className="container">
+      <h2 className="page-header">Search Notes</h2>
+      <div className="inner-container">
+        <form onSubmit={(e) => search(e)}>
+          <div className="form-row">
+            <div className="form-item">
+              <label>Name:</label>
+              <input type="text" ref={searchRef} />
+            </div>
+          </div>
+          <div className="form-row form-row-end">
+            <button className="btn btn-primary" type="submit">
+              Search
+            </button>
+          </div>
         </form>
 
         <br />
         <br />
-
-        {/* filtered notes */}
-
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-around",
+            alignItems: "center",
+          }}
+        >
+          {notes.length !== 0 &&
+            notes.map((note) => {
+              return (
+                <a
+                  onClick={() => navigate("/notes/view", { state: { note } })}
+                  style={{
+                    textDecoration: "none",
+                    padding: "10px",
+                    cursor: "pointer",
+                    fontSize: "20px",
+                    fontWeight: "bold",
+                    color: "var(--font-color)",
+                    fontFamily: "Roboto Mono, monospace",
+                  }}
+                >
+                  {note.name}
+                </a>
+              );
+            })}
         </div>
-        </div>
-  )
+      </div>
+    </div>
+  );
 }

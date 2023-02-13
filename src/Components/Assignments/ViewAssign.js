@@ -1,29 +1,83 @@
-import React from 'react'
+import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function ViewAssign() {
+  const { state } = useLocation();
+  const { assign } = state;
+  const navigate = useNavigate();
+
+  const editAssign = () => {
+    navigate("/assignments/edit", { state: { assign } });
+  };
+
+  const deleteAssign = (e) => {
+    e.preventDefault();
+    axios
+      .delete(`${process.env.REACT_APP_SERVER_URL}/assignments/${assign._id}`)
+      .then((res) => {
+        if (res.data.data === "Assignment deleted successfully!") {
+          navigate("/assignments");
+        } else {
+          console.error(res.data.data);
+        }
+      });
+  };
   return (
     <div className="container">
-      <h2 className="page-header"></h2>
+      <h2 className="page-header">{assign.name}</h2>
 
       <div className="inner-container">
-        <embed width="100%" height="400" src="" type="application/pdf" />
-        <p style="">
-          <span style="">Deadline: </span>
-        </p>
-        <p style="">
-          <span style="">Subject: </span>
-        </p>
-        <div class="btn-row">
-          <a
-            class="btn btn-primary"
-            href="/assignments/<%= assignment.id %>/edit"
+        <img
+          width="100%"
+          height="500px"
+          style={{ objectFit: "contain" }}
+          src={assign.assignImg}
+        />
+        <p
+          style={{
+            fontFamily: "Roboto Mono, monospace",
+            color: "var(--font-color)",
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "Roboto Mono, monospace",
+              color: "var(--font-color)",
+            }}
           >
+            Deadline: {assign.deadline.split("T")[0]}
+          </span>
+        </p>
+        <p
+          style={{
+            fontFamily: "Roboto Mono, monospace",
+            color: "var(--font-color)",
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "Roboto Mono, monospace",
+              color: "var(--font-color)",
+            }}
+          >
+            Subject: {assign.subject}
+          </span>
+        </p>
+        <span
+          style={{
+            fontFamily: "Roboto Mono, monospace",
+            color: "var(--font-color)",
+          }}
+        >
+          {assign.priority ? "**Important**" : ""}
+        </span>
+        <div className="btn-row">
+          <a className="btn btn-primary" onClick={() => editAssign()}>
             Edit
           </a>
-          <form action="<%= url %>?_method=DELETE" method="POST">
-            <button className="btn btn-primary" type="submit">
-              Delete
-            </button>
+          <form onSubmit={(e) => deleteAssign(e)}>
+            <button className="btn btn-primary">Delete</button>
           </form>
         </div>
       </div>

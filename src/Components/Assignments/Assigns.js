@@ -1,28 +1,78 @@
-import React from 'react'
+import React, { useRef, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Assigns() {
+  const [assignments, setAssignments] = useState([]);
+  const searchRef = useRef();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/assignments`)
+      .then((res) => setAssignments(res.data));
+  }, []);
+
+  const search = (e) => {
+    e.preventDefault();
+    axios
+      .get(
+        `${process.env.REACT_APP_SERVER_URL}/assignments?search=${searchRef.current.value}`
+      )
+      .then((res) => setAssignments(res.data));
+  };
+
   return (
     <div className="container">
-    <h2 className="page-header">Search Assignments</h2>
-    <div className="inner-container">
-    <form action="/assignments" method="get">
-        <div className="form-row">
+      <h2 className="page-header">Search Assignments</h2>
+      <div className="inner-container">
+        <form onSubmit={(e) => search(e)}>
+          <div className="form-row">
             <div className="form-item">
-                <label>Name:</label>
-                <input type="text" name="name" />
+              <label>Name:</label>
+              <input type="text" ref={searchRef} />
             </div>
-        </div>
-            <div className="form-row form-row-end">
-                <button className="btn btn-primary" type="submit">Search</button>
-            </div>
-            
+          </div>
+          <div className="form-row form-row-end">
+            <button className="btn btn-primary" type="submit">
+              Search
+            </button>
+          </div>
+        </form>
 
-    </form>  
-    
-    <br />
-    <br />
-    {/* filtered assigns */}
+        <br />
+        <br />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-around",
+            alignItems: "center",
+          }}
+        >
+          {assignments.length !== 0 &&
+            assignments.map((assign) => {
+              return (
+                <a
+                  onClick={() =>
+                    navigate("/assignments/view", { state: { assign } })
+                  }
+                  style={{
+                    textDecoration: "none",
+                    padding: "10px",
+                    cursor: "pointer",
+                    fontSize: "20px",
+                    fontWeight: "bold",
+                    color: "var(--font-color)",
+                    fontFamily: "Roboto Mono, monospace",
+                  }}
+                >
+                  {assign.name}
+                </a>
+              );
+            })}
+        </div>
+      </div>
     </div>
-    </div>
-  )
+  );
 }

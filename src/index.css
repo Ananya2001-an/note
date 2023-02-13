@@ -1,134 +1,106 @@
-@import 'CSS/header.css';
-@import 'CSS/footer.css';
-@import 'CSS/form.css';
-@import 'CSS/buttons.css';
-@import 'CSS/variables.css';
-    
-body{
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background: var(--bg);
+@import "CSS/header.css";
+@import "CSS/footer.css";
+@import "CSS/form.css";
+@import "CSS/buttons.css";
+@import "CSS/variables.css";
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
 }
 
-.page-header{
-    font-size: 40px;
-    font-family: 'Roboto Mono', monospace;
-    font-weight: bold;
-    color: var(--font-color);
-    text-align: center;
+.page-header {
+  font-size: 40px;
+  font-family: "Roboto Mono", monospace;
+  font-weight: bold;
+  color: var(--font-color);
+  text-align: center;
 }
-.container{
-    max-width: 1200px;
-    margin: auto;
-}
-
-.inner-container{
-    margin: 0 1rem;
-    padding-bottom: 60px; 
+.container {
+  max-width: 1200px;
+  margin: auto;
 }
 
-.index-contents-data{
- display: grid;
- grid-template-columns: 300px 300px 300px;
- grid-template-rows: auto;
- justify-content: space-between;
- align-items: center;
- font-size: 20px;
- font-family: 'Roboto Mono', monospace;
- color: var(--font-color);
+.inner-container {
+  margin: 0 1rem;
+  padding-bottom: 60px;
 }
 
-.index-contents-data-other a{
-    display:flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 20px;
-    font-family: 'Roboto Mono', monospace;
-    color: var(--font-color);
-    cursor: pointer;
-    text-decoration: none;
+.errorMessage {
+  color: var(--font-color);
+  font-family: "Roboto Mono", monospace;
+  font-size: larger;
+  margin-top: 20px;
+  margin-left: 20px;
+  font-style: italic;
 }
 
-.index-contents-data span, .index-contents-data-other span {
-    font-weight: bold;
+.cover-image {
+  width: 100%;
+  overflow: hidden;
+}
+.cover-image img {
+  height: 500px;
+  object-fit: cover;
+  margin: -250px 0 0 0px;
 }
 
-.index-contents-data a{
-    font-family: 'Roboto Mono', monospace;
-    color: var(--font-color);
-    font-style: italic;
+.mode-icon {
+  border: 0;
+  background: none;
+  cursor: pointer;
+  color: var(--font-color);
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 20px;
 }
 
-.index-contents-data a:hover{
-    color: var(--hover);
-}
-.index-contents-data-other a:hover
-{
-    color: var(--hover);
+.mode-icon:hover {
+  color: var(--hover);
 }
 
-.errorMessage{
-    color: var(--font-color);
-    font-family: 'Roboto Mono', monospace;
-    font-size: larger;
-    margin-top: 20px;
-    margin-left: 20px;
-    font-style: italic;
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-.cover-image{
-    max-width: 100%; max-height: 300px; overflow: hidden;
-}
-.cover-image img{
-    max-width: initial;
-    margin: -250px 0 0 0px;
+::-webkit-scrollbar-track {
+  background: none;
+  border-left: 1px solid rgb(118, 243, 201);
 }
 
-.mode-icon
-{
-    border: 0;
-    background: none;
-    cursor: pointer;
-    color: var(--font-color);
-    font-size: 20px;
-    font-weight: bold;
-    margin-right: 20px;
+::-webkit-scrollbar-thumb {
+  background-color: rgb(118, 243, 201);
 }
 
-.mode-icon:hover
-{
-    color: var(--hover);
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(110, 231, 191);
 }
 
-::-webkit-scrollbar
-{
-    width: 10px;
-
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 1rem;
+  justify-items: center;
 }
 
-::-webkit-scrollbar-track
-{
-    background: none;
-    border-left: 1px solid rgb(118, 243, 201);
+.grid p {
+  color: var(--font-color);
+  font-family: "Roboto Mono", monospace;
+  font-size: 20px;
 }
-
-::-webkit-scrollbar-thumb
-{
-    background-color: rgb(118, 243, 201);
-}
-
-::-webkit-scrollbar-thumb:hover
-{
-    background-color: rgb(110, 231, 191);
-}
-
 
 @media screen and (max-width: 768px) {
-    .page-header{
-        font-size: 25px;
-    }
+  .page-header {
+    font-size: 25px;
+  }
+
+  .grid p {
+    font-size: 15px;
+  }
 }

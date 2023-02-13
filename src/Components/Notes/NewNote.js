@@ -1,29 +1,53 @@
-import React, {useRef} from 'react'
-import axios from 'axios';
+import React, { useRef, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function NewNote() {
-const nameRef = useRef();
-const noteRef = useRef();
-let imgURL = ''
+  const nameRef = useRef();
+  const noteRef = useRef();
+  const navigate = useNavigate();
+  const [image, setImage] = useState("");
 
-const loadFile = (e)=>{
-let output = document.getElementById("output");
-output.hidden = false;
-imgURL = URL.createObjectURL(e.target.files[0]);
-output.src = imgURL
-}
-    
-const addNote = async(e)=>{
+  const uploadFile = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertToBase64(file);
+    setImage(base64);
+    let output = document.getElementById("output");
+    output.hidden = false;
+    output.src = base64;
+  };
+
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
+  const addNote = async (e) => {
     e.preventDefault();
     const note = {
       name: nameRef.current.value,
       note: noteRef.current.value,
-      img: imgURL
+      img: image,
     };
 
-    axios.post("https://5000-ananya2001an-noteserver-qb5v37z4aau.ws-us86.gitpod.io/notes", note)
-    .then(res => console.log(res))
-  }
+    axios
+      .post(`${process.env.REACT_APP_SERVER_URL}/notes`, note)
+      .then((res) => {
+        if (res.data.data === "Note saved successfully!") {
+          navigate("/notes");
+        } else {
+          console.error(res.data.data);
+        }
+      });
+  };
 
   return (
     <div className="container">
@@ -36,23 +60,32 @@ const addNote = async(e)=>{
               <input type="text" ref={nameRef} />
             </div>
             <div className="form-item">
-              <label for="file" className='file-label'>Choose cover image</label>
+              <label for="file" className="file-label">
+                Choose cover image
+              </label>
               <input
                 type="file"
-                id='file'
+                id="file"
                 accept="image/*"
-                onChange={(e) => loadFile(e)}
+                onChange={(e) => uploadFile(e)}
               />
             </div>
           </div>
-          <div className="form-row" style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
-              <img
-                hidden
-                id="output"
-                width="200px"
-                height="200px"
-                style={{ objectFit: "contain" }}
-              />
+          <div
+            className="form-row"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <img
+              hidden
+              id="output"
+              width="200px"
+              height="200px"
+              style={{ objectFit: "contain" }}
+            />
           </div>
           <div className="form-row">
             <div className="form-item">
