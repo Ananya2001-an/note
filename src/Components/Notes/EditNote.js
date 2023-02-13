@@ -77,6 +77,7 @@ export default function EditNote() {
             }}
           >
             <img
+              alt="preview"
               id="output"
               width="200px"
               height="200px"
@@ -95,12 +96,12 @@ export default function EditNote() {
             </div>
           </div>
           <div className="btn-row">
-            <a
+            <button
               className="btn btn-primary"
               onClick={() => navigate("/notes/view", { state: { note } })}
             >
               Cancel
-            </a>
+            </button>
             <button className="btn btn-primary" type="submit">
               Update
             </button>

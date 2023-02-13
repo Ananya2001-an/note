@@ -102,6 +102,7 @@ export default function NewAssign() {
             }}
           >
             <img
+              alt="preview"
               hidden
               id="output"
               width="200px"
@@ -110,9 +111,12 @@ export default function NewAssign() {
             />
           </div>
           <div className="btn-row">
-            <a className="btn btn-primary" href="/assignments">
+            <button
+              className="btn btn-primary"
+              onClick={() => navigate("/assignments")}
+            >
               Cancel
-            </a>
+            </button>
             <button className="btn btn-primary" type="submit">
               Create
             </button>

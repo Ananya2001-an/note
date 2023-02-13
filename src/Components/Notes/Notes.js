@@ -53,9 +53,11 @@ export default function Notes() {
           {notes.length !== 0 &&
             notes.map((note) => {
               return (
-                <a
+                <button
                   onClick={() => navigate("/notes/view", { state: { note } })}
                   style={{
+                    background: "none",
+                    border: "none",
                     textDecoration: "none",
                     padding: "10px",
                     cursor: "pointer",
@@ -66,7 +68,7 @@ export default function Notes() {
                   }}
                 >
                   {note.name}
-                </a>
+                </button>
               );
             })}
         </div>

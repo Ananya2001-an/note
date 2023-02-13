@@ -114,6 +114,7 @@ export default function EditAssign() {
             }}
           >
             <img
+              alt="preview"
               id="output"
               width="200px"
               height="200px"
@@ -122,14 +123,14 @@ export default function EditAssign() {
             />
           </div>
           <div className="btn-row">
-            <a
+            <button
               className="btn btn-primary"
               onClick={() =>
                 navigate("/assignments/view", { state: { assign } })
               }
             >
               Cancel
-            </a>
+            </button>
             <button className="btn btn-primary" type="submit">
               Update
             </button>

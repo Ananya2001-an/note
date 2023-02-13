@@ -29,6 +29,7 @@ export default function ViewAssign() {
 
       <div className="inner-container">
         <img
+          alt="assignment"
           width="100%"
           height="500px"
           style={{ objectFit: "contain" }}
@@ -73,9 +74,9 @@ export default function ViewAssign() {
           {assign.priority ? "**Important**" : ""}
         </span>
         <div className="btn-row">
-          <a className="btn btn-primary" onClick={() => editAssign()}>
+          <button className="btn btn-primary" onClick={() => editAssign()}>
             Edit
-          </a>
+          </button>
           <form onSubmit={(e) => deleteAssign(e)}>
             <button className="btn btn-primary">Delete</button>
           </form>

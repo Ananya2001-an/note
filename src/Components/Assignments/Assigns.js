@@ -53,11 +53,13 @@ export default function Assigns() {
           {assignments.length !== 0 &&
             assignments.map((assign) => {
               return (
-                <a
+                <button
                   onClick={() =>
                     navigate("/assignments/view", { state: { assign } })
                   }
                   style={{
+                    background: "none",
+                    border: "none",
                     textDecoration: "none",
                     padding: "10px",
                     cursor: "pointer",
@@ -68,7 +70,7 @@ export default function Assigns() {
                   }}
                 >
                   {assign.name}
-                </a>
+                </button>
               );
             })}
         </div>

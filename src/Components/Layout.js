@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { FaGithub, FaMoon, FaSun } from "react-icons/fa";
+import { FaGithub, FaMoon } from "react-icons/fa";
 import { Outlet, useNavigate } from "react-router-dom";
 
 export default function Layout() {
@@ -24,45 +24,61 @@ export default function Layout() {
     <>
       <header className="header">
         <nav className="header-nav">
-          <a
+          <button
             onClick={() => navigate("/")}
-            style={{ cursor: "pointer" }}
+            style={{ cursor: "pointer", background: "none", border: "none" }}
             className="header-title"
           >
             note.
-          </a>
+          </button>
           <ul className="nav-menu-desktop">
             <li>
-              <a
-                style={{ cursor: "pointer" }}
+              <button
+                style={{
+                  cursor: "pointer",
+                  background: "none",
+                  border: "none",
+                }}
                 onClick={() => navigate("/assignments")}
               >
                 Assignments
-              </a>
+              </button>
             </li>
             <li>
-              <a
-                style={{ cursor: "pointer" }}
+              <button
+                style={{
+                  cursor: "pointer",
+                  background: "none",
+                  border: "none",
+                }}
                 onClick={() => navigate("/assignments/new")}
               >
                 Add Assignment
-              </a>
+              </button>
             </li>
             <li>
-              <a
-                style={{ cursor: "pointer" }}
+              <button
+                style={{
+                  cursor: "pointer",
+                  background: "none",
+                  border: "none",
+                }}
                 onClick={() => navigate("/notes")}
               >
                 Notes
-              </a>
+              </button>
             </li>
             <li>
-              <a
-                style={{ cursor: "pointer" }}
+              <button
+                style={{
+                  cursor: "pointer",
+                  background: "none",
+                  border: "none",
+                }}
                 onClick={() => navigate("/notes/new")}
               >
                 Add Note
-              </a>
+              </button>
             </li>
             <li>
               <button
@@ -84,33 +100,36 @@ export default function Layout() {
       </header>
       <ul className="nav-menu-mobile">
         <li className="nav-item">
-          <a
-            style={{ cursor: "pointer" }}
+          <button
+            style={{ cursor: "pointer", background: "none", border: "none" }}
             onClick={() => navigate("/assignments")}
           >
             Assignments
-          </a>
+          </button>
         </li>
         <li className="nav-item">
-          <a
-            style={{ cursor: "pointer" }}
+          <button
+            style={{ cursor: "pointer", background: "none", border: "none" }}
             onClick={() => navigate("/assignments/new")}
           >
             Add Assignment
-          </a>
+          </button>
         </li>
         <li className="nav-item">
-          <a style={{ cursor: "pointer" }} onClick={() => navigate("/notes")}>
+          <button
+            style={{ cursor: "pointer", background: "none", border: "none" }}
+            onClick={() => navigate("/notes")}
+          >
             Notes
-          </a>
+          </button>
         </li>
         <li className="nav-item">
-          <a
-            style={{ cursor: "pointer" }}
+          <button
+            style={{ cursor: "pointer", background: "none", border: "none" }}
             onClick={() => navigate("/notes/new")}
           >
             Add Note
-          </a>
+          </button>
         </li>
         <li className="nav-item">
           <button
@@ -137,7 +156,7 @@ export default function Layout() {
           <a
             href="https://www.github.com/Ananya2001-an/note"
             target="_blank"
-            rel="nonreferrer"
+            rel="noreferrer"
           >
             <FaGithub />
           </a>

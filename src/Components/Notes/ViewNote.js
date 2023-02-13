@@ -27,7 +27,7 @@ export default function ViewNote() {
   return (
     <>
       <div className="cover-image">
-        <img width="100%" height="100%" src={note.cover} />
+        <img width="100%" height="100%" alt="cover-image" src={note.cover} />
       </div>
       {/* <div className="emoji-input">emoji picker</div> */}
       <div className="container">
@@ -43,9 +43,9 @@ export default function ViewNote() {
           </p>
 
           <div class="btn-row">
-            <a className="btn btn-primary" onClick={() => editNote()}>
+            <button className="btn btn-primary" onClick={() => editNote()}>
               Edit
-            </a>
+            </button>
             <button className="btn btn-primary" onClick={() => deleteNote()}>
               Delete
             </button>

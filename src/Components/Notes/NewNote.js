@@ -80,6 +80,7 @@ export default function NewNote() {
             }}
           >
             <img
+              alt="preview"
               hidden
               id="output"
               width="200px"
