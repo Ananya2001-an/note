@@ -1,7 +1,6 @@
 footer{
     padding: 10px;
-    text-align: center;
-    position:fixed;
+    position:absolute;
     bottom:0;
     width: 100%;
 }
@@ -10,6 +9,9 @@ footer{
     color: var(--font-color);
     text-decoration: none;
     font-size: 19px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 .social a:hover{
