@@ -19,7 +19,8 @@ FROM nginx:stable-alpine
 
 # Copying built assets from builder
 COPY --from=builder /app/build /usr/share/nginx/html
-COPY --from=builder /app/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+RUN rm /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/nginx/nginx.conf /etc/nginx/conf.d
 
 EXPOSE 80
 
