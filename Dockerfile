@@ -5,7 +5,7 @@ FROM node:alpine AS builder
 WORKDIR /app
 
 # Installing dependencies
-COPY ./package.json ./
+COPY package*.json .
 RUN npm install
 
 # Copying all the files in our project
@@ -16,6 +16,8 @@ RUN npm run build
 
 # Fetching the latest nginx image
 FROM nginx
+
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copying built assets from builder
 COPY --from=builder /app/build /usr/share/nginx/html
