@@ -50,7 +50,7 @@ export default function Notes() {
             alignItems: "center",
           }}
         >
-          {notes.length !== 0 &&
+          {Array.isArray(notes) && notes.length !== 0 &&
             notes.map((note) => {
               return (
                 <button

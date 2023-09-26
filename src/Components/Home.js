@@ -20,7 +20,7 @@ export default function Home() {
       </h1>
       <div className="inner-container">
         <div className="grid">
-          {assignments.length !== 0 &&
+          {Array.isArray(assignments) && assignments.length !== 0 && 
             assignments.map((assign) => {
               return (
                 <>
