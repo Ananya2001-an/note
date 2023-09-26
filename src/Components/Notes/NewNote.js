@@ -1,8 +1,6 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import dotenv from "dotenv";
-dotenv.config();
 
 export default function NewNote() {
   const nameRef = useRef();
