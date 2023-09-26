@@ -39,7 +39,7 @@ export default function NewNote() {
     };
 
     axios
-      .post(`http://note-server:5000/notes`, note)
+      .post(`http://localhost:5000/notes`, note)
       .then((res) => {
         if (res.data.data === "Note saved successfully!") {
           navigate("/notes");
