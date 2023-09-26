@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import dotenv from "dotenv";
+dotenv.config();
 
 export default function NewNote() {
   const nameRef = useRef();
@@ -39,7 +41,7 @@ export default function NewNote() {
     };
 
     axios
-      .post(`http://localhost:5000/notes`, note)
+      .post(`${process.env.REACT_APP_SERVER_URL}/notes`, note)
       .then((res) => {
         if (res.data.data === "Note saved successfully!") {
           navigate("/notes");
