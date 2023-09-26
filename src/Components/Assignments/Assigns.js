@@ -50,7 +50,7 @@ export default function Assigns() {
             alignItems: "center",
           }}
         >
-          {assignments.length !== 0 &&
+          {Array.isArray(assignments) && assignments.length !== 0 &&
             assignments.map((assign) => {
               return (
                 <button
