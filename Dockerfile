@@ -4,7 +4,7 @@ FROM node:alpine AS builder
 # Setting up the work directory
 WORKDIR /app
 
-ENV REACT_APP_SERVER_URL=http://localhost:5000
+# ENV REACT_APP_SERVER_URL=http://localhost:5000
 
 # Installing dependencies
 COPY package*.json .
