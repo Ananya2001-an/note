@@ -5,7 +5,6 @@ FROM node:alpine AS builder
 WORKDIR /app
 
 # ENV REACT_APP_SERVER_URL=http://localhost:5000
-ENV REACT_APP_SERVER_URL=http://note-server-service:5000
 
 # Installing dependencies
 COPY package*.json .

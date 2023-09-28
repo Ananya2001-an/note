@@ -9,7 +9,7 @@ export default function Notes() {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/notes`)
+      .get(`/notes`)
       .then((res) => setNotes(res.data));
   }, []);
 
@@ -17,7 +17,7 @@ export default function Notes() {
     e.preventDefault();
     axios
       .get(
-        `${process.env.REACT_APP_SERVER_URL}/notes?search=${searchRef.current.value}`
+        `/notes?search=${searchRef.current.value}`
       )
       .then((res) => setNotes(res.data));
   };

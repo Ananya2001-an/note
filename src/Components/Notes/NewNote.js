@@ -39,7 +39,7 @@ export default function NewNote() {
     };
 
     axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/notes`, note)
+      .post(`/notes`, note)
       .then((res) => {
         if (res.data.data === "Note saved successfully!") {
           navigate("/notes");
