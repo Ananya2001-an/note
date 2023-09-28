@@ -37,7 +37,7 @@ export default function EditNote() {
       img: image,
     };
     axios
-      .put(`${process.env.REACT_APP_SERVER_URL}/notes/${note._id}`, newNote)
+      .put(`/notes/${note._id}`, newNote)
       .then((res) => {
         if (res.data.data === "Note updated successfully!") {
           navigate("/notes");

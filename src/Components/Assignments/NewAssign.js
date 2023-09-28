@@ -41,7 +41,7 @@ export default function NewAssign() {
     };
 
     axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/assignments`, assignment)
+      .post(`/assignments`, assignment)
       .then((res) => {
         if (res.data.data === "Assignment saved successfully!") {
           navigate("/assignments");

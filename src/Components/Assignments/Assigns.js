@@ -9,7 +9,7 @@ export default function Assigns() {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/assignments`)
+      .get(`/assignments`)
       .then((res) => setAssignments(res.data));
   }, []);
 
@@ -17,7 +17,7 @@ export default function Assigns() {
     e.preventDefault();
     axios
       .get(
-        `${process.env.REACT_APP_SERVER_URL}/assignments?search=${searchRef.current.value}`
+        `/assignments?search=${searchRef.current.value}`
       )
       .then((res) => setAssignments(res.data));
   };

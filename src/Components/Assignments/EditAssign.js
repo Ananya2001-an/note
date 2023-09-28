@@ -44,7 +44,7 @@ export default function EditAssign() {
 
     axios
       .put(
-        `${process.env.REACT_APP_SERVER_URL}/assignments/${assign._id}`,
+        `/assignments/${assign._id}`,
         newAssignment
       )
       .then((res) => {

@@ -9,7 +9,7 @@ export default function Home() {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}`)
+      .get(``)
       .then((res) => setAssignments(res.data));
   }, []);
 

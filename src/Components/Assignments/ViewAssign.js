@@ -14,7 +14,7 @@ export default function ViewAssign() {
   const deleteAssign = (e) => {
     e.preventDefault();
     axios
-      .delete(`${process.env.REACT_APP_SERVER_URL}/assignments/${assign._id}`)
+      .delete(`/assignments/${assign._id}`)
       .then((res) => {
         if (res.data.data === "Assignment deleted successfully!") {
           navigate("/assignments");

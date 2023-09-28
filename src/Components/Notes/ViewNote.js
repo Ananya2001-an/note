@@ -14,7 +14,7 @@ export default function ViewNote() {
 
   const deleteNote = () => {
     axios
-      .delete(`${process.env.REACT_APP_SERVER_URL}/notes/${note._id}`)
+      .delete(`/notes/${note._id}`)
       .then((res) => {
         if (res.data.data === "Note deleted successfully!") {
           navigate("/notes");
