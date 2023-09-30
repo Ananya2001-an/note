@@ -51,12 +51,7 @@ This environment is fully on computer and requires each dependency (for example 
 The page will reload when you make changes.You may also see any lint errors in the console.
 
 ## License 🛡
-LinkFree is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contributing 🛠
-- Contributions make the open source community an amazing place to learn, inspire, and create.
-- Any contributions you make are **truly appreciated**.
-- Let's continue contributing to keep the community active and growing.
+note is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Support 🙏 
 Don't forget to leave a star ⭐️
