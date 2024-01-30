@@ -1,0 +1,3 @@
+[submodule "note-server"]
+	path = note-server
+	url = https://github.com/Ananya2001-an/note-server.git
